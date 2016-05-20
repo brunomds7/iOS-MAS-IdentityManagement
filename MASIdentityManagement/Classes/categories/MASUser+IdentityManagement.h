@@ -46,15 +46,6 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
 
 
 /**
- * Retrieves an array of 'MASUser'.  Note, this version has no paging or filtering at all.  You will
- * receive not only all of the 'MASUser' instances, but all their fields as well.
- *
- * @param completion Completion block with either the array of 'MASUser' or 'NSError'.
- */
-+ (void)getAllUsersWithCompletion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion;
-
-
-/**
  * Retrieves an array of 'MASUser' with various sorting, paging and included/excluded attribute options.
  *
  * @param sortByAttribute An attribute of the 'MASUser' that can be used to sort the results. (optional)

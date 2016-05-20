@@ -62,22 +62,6 @@ typedef void (^GetUsersFailure)(NSError *error);
 ///--------------------------------------
 
 
-+ (void)getAllUsersWithCompletion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
-{
-    //DLog(@"\n\ncalled\n\n");
-    
-    //
-    // Create the empty filtered request
-    //
-    MASFilteredRequest *request = [MASFilteredRequest filteredRequest];
-    
-    //
-    // Execute the filtered request
-    //
-    [self getUsersByFilteredRequest:request completion:completion];
-}
-
-
 + (void)getAllUsersSortedByAttribute:(NSString *)sortByAttribute
     sortOrder:(MASFilteredRequestSortOrder)sortOrder
     pageRange:(NSRange)pageRange
