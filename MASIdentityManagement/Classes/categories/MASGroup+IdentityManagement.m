@@ -125,19 +125,15 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
                 
                 if (completion) {
                     
-                    completion(group,nil);
+                    completion(group, nil);
                 }
                 
             }
             else {
                 
-                NSString *message = NSLocalizedString(@"MASResponseIndoBody is empty", @"MASResponseIndoBody is empty");
-                
-                NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain code:MASIdentityManagementErrorMASResponseInfoBodyEmpty userInfo:@{NSLocalizedDescriptionKey : message}];
-                
                 if (completion) {
                     
-                    completion(nil,localizedError);
+                    completion(nil, nil);
                 }
             }
         }
@@ -198,7 +194,10 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         //
         // Notify the block
         //
-        if(completion) completion(userList[0], error);
+        if(completion)
+        {
+            completion([userList count] > 0 ? userList[0] : nil, error);
+        }
     }];
 }
 
@@ -238,7 +237,7 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         //
         // Notify the block
         //
-        if(completion) completion(userList[0], error);
+        if(completion) completion([userList count] > 0 ? userList[0] : nil, error);
     }];
 }
 
@@ -289,7 +288,7 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         //
         // Notify the block
         //
-        if(completion) completion(userList[0], error);
+        if(completion) completion([userList count] > 0 ? userList[0] : nil, error);
     }];
 }
 

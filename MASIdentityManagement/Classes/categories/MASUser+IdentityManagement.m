@@ -184,17 +184,15 @@ typedef void (^GetUsersFailure)(NSError *error);
         }
         
         //
-        // Error
+        // Empty result
         //
         else
         {
-            NSString *message = NSLocalizedString(@"MASResponseIndoBody is empty", @"MASResponseIndoBody is empty");
-            NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain code:MASIdentityManagementErrorMASResponseInfoBodyEmpty userInfo:@{NSLocalizedDescriptionKey : message}];
             
             //
             // Notify the block
             //
-            if (completion) completion(nil,localizedError);
+            if (completion) completion(nil, nil);
         }
     }];
 }
@@ -246,7 +244,7 @@ typedef void (^GetUsersFailure)(NSError *error);
         //
         // Notify the block
         //
-        if(completion) completion(userList[0], error);
+        if(completion) completion([userList count] > 0 ? userList[0] : nil, error);
     }];
 }
 
@@ -286,7 +284,7 @@ typedef void (^GetUsersFailure)(NSError *error);
         //
         // Notify the block
         //
-        if(completion) completion(userList[0], error);
+        if(completion) completion([userList count] > 0 ? userList[0] : nil, error);
     }];
 }
 
@@ -337,7 +335,7 @@ typedef void (^GetUsersFailure)(NSError *error);
         //
         // Notify the block
         //
-        if(completion) completion(userList[0], error);
+        if(completion) completion([userList count] > 0 ? userList[0] : nil, error);
     }];
 }
 
