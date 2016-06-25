@@ -42,7 +42,8 @@
 - (NSString *)debugDescription
 {
     return [NSString stringWithFormat:@"(%@) sortByAttribute: %@, sortOrder: %@, paginationRange: (starting location: %ld, length: %ld) and filter: %@",
-        self.class, self.sortByAttribute, (self.sortOrder ? MASIdMgmtSortOrderAscending : MASIdMgmtSortOrderDescending),
+            self.class, self.sortByAttribute, (self.sortOrder == MASFilteredRequestSortOrderAscending ?
+                                               MASIdMgmtSortOrderAscending : MASIdMgmtSortOrderDescending),
         (unsigned long)self.paginationRange.location, (unsigned long)self.paginationRange.length, [self.filter debugDescription]];
 }
 
@@ -96,12 +97,11 @@
         [filterRequestPath appendFormat:@"sortBy=%@", self.sortByAttribute];
         
         //
-        // SortOrder
+        // Sort Order
         //
-        [filterRequestPath appendFormat:@"&sortOrder=%@",
-            (self.sortOrder == MASFilteredRequestSortOrderAscending ?
-                MASIdMgmtSortOrderAscending : MASIdMgmtSortOrderDescending)];
+        [filterRequestPath appendFormat:@"&sortOrder=%@",(self.sortOrder == MASFilteredRequestSortOrderAscending ? MASIdMgmtSortOrderAscending : MASIdMgmtSortOrderDescending)];
     }
+    
     
     //
     // Pagination
