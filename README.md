@@ -1,22 +1,19 @@
-# CA Mobile App Services - iOS SDK
+# MAS IdentityManagement Framework for iOS
 
-## MAS SDK
-Essential mobile services for enterprises made simple and secure. Extends the power of CA Mobile API Gateway (MAG) to mobile devices.
-For more information about MAS and its features, see [the website][mas.ca.com] and [get started][docs].
+## Overview
+MAS IdentityManagement is the user and group management framework for [CA Mobile App Services][mas.ca.com]. 
 
-## MAS SDK Frameworks
+## Features
 
-The MAS SDK includes the following frameworks:
+The MASIdentityManagement framework comes with the following features:
 
-- MASFoundation
-- MASConnecta
-- MASIdentityManagement
-- MASStorage
-- MASUI
+- User retrieval
+- Group retrieval and management
 
 ## Get Started
 
 To download the latest build, see the [releases][releases] page.
+For documentation, visit our [developer site][docs].
 
 
 ## How You Can Contribute
