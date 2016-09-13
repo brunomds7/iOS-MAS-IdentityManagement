@@ -140,7 +140,13 @@
 
 - (NSString *)asStringFilterExpression
 {
-    return self.expression;
+    if ([self.expression containsString:MASIdMgmtFilterPrefix])
+    {
+        return self.expression;
+    }
+    else {
+        return [NSString stringWithFormat:@"%@%@",MASIdMgmtFilterPrefix, self.expression];
+    }
 }
 
 
