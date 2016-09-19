@@ -422,7 +422,7 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //Build Parameters
     //
     NSArray *schemas = @[  kMASGroupScimSchemaCore ];
-    NSDictionary *owner = @{ MASIdMgmtValue: self.owner};
+    NSDictionary *owner = @{ MASIdMgmtValue: self.owner ? self.owner : @""};
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    
         schemas, kMASGroupScimSchemas,
