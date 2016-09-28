@@ -140,7 +140,23 @@ typedef void (^GetUsersFailure)(NSError *error);
 + (void)getUserByObjectId:(NSString *)objectId
     completion:(void (^)(MASUser *user, NSError *error))completion
 {
-    NSParameterAssert(objectId);
+    //
+    // Check for objectId
+    //
+    if (!objectId)
+    {
+        NSString *message = NSLocalizedString(@"Missing parameter", @"Missing parameter");
+        NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain
+                                                      code:MASIdentityManagementErrorMissingParameter
+                                                  userInfo:@{NSLocalizedDescriptionKey : message}];
+        
+        if (completion)
+        {
+            completion(nil,localizedError);
+        }
+        
+        return;
+    }
     
     //
     // Build the PathURL

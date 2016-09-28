@@ -96,8 +96,8 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  * @param objectId The object id used to locate the 'MASUser'.
  * @param completion Completion block with either the 'MASUser' or 'NSError'.
  */
-+ (void)getUserByObjectId:(NSString *)objectId
-    completion:(void (^)(MASUser *user, NSError *error))completion;
++ (void)getUserByObjectId:(nonnull NSString *)objectId
+               completion:(nullable void (^)(MASUser * _Nullable user, NSError * _Nullable error))completion;
 
 
 /**

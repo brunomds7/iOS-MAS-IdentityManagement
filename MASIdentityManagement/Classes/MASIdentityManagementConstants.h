@@ -191,7 +191,8 @@ static NSString *const kSDKErrorDomain = @"com.ca.MASIdentityManagement:ErrorDom
 typedef NS_ENUM (NSUInteger, MASIdentityManagementError)
 {
     MASIdentityManagementErrorMASResponseInfoBodyEmpty = 101,
-    MASIdentityManagementErrorGroupNotFound = 102
+    MASIdentityManagementErrorGroupNotFound = 102,
+    MASIdentityManagementErrorMissingParameter = 103
 };
 
 
@@ -269,7 +270,7 @@ static NSString *const MASIdMgmtUserAttributeThumbnailPhoto =@"thumbnail";
 ///--------------------------------------
 /// @name Attribute & Logical Operators
 ///--------------------------------------
-
+ 
 
 /**
  * Retrieve the 'NSString' value of a 'MASFilterAttributeOperator'.

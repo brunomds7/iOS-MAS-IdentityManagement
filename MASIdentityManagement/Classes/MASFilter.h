@@ -174,7 +174,7 @@
  * @param attribute The 'NSString' attribute identifier.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttributePresent:(NSString *)attribute;
++ (nullable MASFilter *)filterByAttributePresent:(nonnull NSString *)attribute;
 
 
 /**
@@ -220,8 +220,22 @@
  * @param value The 'NSString' attribute value.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttribute:(NSString *)attribute withAttributeOperator:(MASFilterAttributeOperator)attributeOperator andValue:(NSString *)value;
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute
+                    withAttributeOperator:(MASFilterAttributeOperator)attributeOperator
+                                 andValue:(nonnull NSString *)value;
 
+
+/**
+ * Create a 'MASFilter' that filters by an attribute, and attribute operator.
+ *
+ * The present filter in 'Filters'use this method to construct it's instance.
+ *
+ * @param attribute The 'NSString' attribute identifier.
+ * @param attributeOperator The 'MASFilterAttributeOperator' attribute operator.
+ * @return 'MASFilter'.
+ */
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute
+                    withAttributeOperator:(MASFilterAttributeOperator)attributeOperator;
 
 /**
  * Create a 'MASFilter' from a complete SCIM 2.0 expression as an 'NSString'.

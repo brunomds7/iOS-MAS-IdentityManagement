@@ -121,12 +121,17 @@
 + (MASFilter *)filterByAttributePresent:(NSString *)attribute;
 {
     //
-    // None of these are optional
+    // Check for attribute
     //
-    NSParameterAssert(attribute);
-
-    // todo
-    return nil;
+    if (!attribute)
+    {
+        return nil;
+    }
+    
+    //
+    // Create and return filter
+    //
+    return [self filterByAttribute:attribute withAttributeOperator:MASFilterAttributeOperatorPresent];
 }
 
 
@@ -156,10 +161,12 @@
         attribute, [MASIdentityManagementConstants attributeOperatorToString:attributeOperator], value);
     
     //
-    // None of these are optional
+    // Check for missing parameters. Return nil filter if any non-optional parameters are missing.
     //
-    NSParameterAssert(attribute);
-    NSParameterAssert(value);
+    if (!attribute || !value)
+    {
+        return nil;
+    }
     
     NSMutableString *expression = [NSMutableString stringWithString:MASIdMgmtFilterPrefix];
     
@@ -176,12 +183,41 @@
 }
 
 
++ (MASFilter *)filterByAttribute:(NSString *)attribute withAttributeOperator:(MASFilterAttributeOperator)attributeOperator
+{
+    DLog(@"\n\ncalled with attribute: %@, with operator: %@ \n\n",
+         attribute, [MASIdentityManagementConstants attributeOperatorToString:attributeOperator]);
+    
+    //
+    // Check for missing parameters. Return nil filter if any non-optional parameters are missing.
+    //
+    if (!attribute)
+    {
+        return nil;
+    }
+    
+    NSMutableString *expression = [NSMutableString stringWithString:MASIdMgmtFilterPrefix];
+    
+    [expression appendString:attribute];
+    [expression appendString:MASIdMgmtEmptySpace];
+    [expression appendString:[MASIdentityManagementConstants attributeOperatorToString:attributeOperator]];
+    
+    MASFilter *filter = [[MASFilter alloc] initPrivate];
+    filter.expression = expression;
+    
+    return filter;
+}
+
+
 + (MASFilter *)fromStringFilterExpression:(NSString *)expression
 {
     //
-    // None of these are optional
+    // Check for expression.
     //
-    NSParameterAssert(expression);
+    if (!expression)
+    {
+        return nil;
+    }
     
     MASFilter *filter = [[MASFilter alloc] initPrivate];
     filter.expression = expression;

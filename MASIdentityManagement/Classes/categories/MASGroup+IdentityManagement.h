@@ -63,8 +63,8 @@
  * @param objectId The object identifier used to locate the group.
  * @param completion Completion block with either the 'MASGroup' or 'NSError'.
  */
-+ (void)getGroupByObjectId:(NSString *)objectId
-    completion:(void (^)(MASGroup *group, NSError *error))completion;
++ (void)getGroupByObjectId:(nonnull NSString *)objectId
+                completion:(nullable void (^)(MASGroup * _Nullable group, NSError * _Nullable error))completion;
 
 
 /**
@@ -187,7 +187,7 @@
  *  @param user MASUser object
  *  @param completion Completion block with either the MASGroup object or the Error message
  */
-- (void)addMember:(MASUser *)user completion:(void (^)(MASGroup *group, NSError *error))completion;
+- (void)addMember:(nonnull MASUser *)user completion:(nullable void (^)(MASGroup * _Nullable group, NSError * _Nullable error))completion;
 
 
 /**
@@ -196,7 +196,7 @@
  * @param user MASUser object
  * @param completion Completion block with either the MASGroup object or the Error message
  */
-- (void)removeMember:(MASUser *)user completion:(void (^)(MASGroup *group, NSError *error))completion;
+- (void)removeMember:(nonnull MASUser *)user completion:(nullable void (^)(MASGroup * _Nullable group, NSError * _Nullable error))completion;
 
 
 

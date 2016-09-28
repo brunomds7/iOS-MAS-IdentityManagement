@@ -96,8 +96,25 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
 + (void)getGroupByObjectId:(NSString *)objectId
     completion:(void (^)(MASGroup *group, NSError *error))completion
 {
-    NSParameterAssert(objectId);
-
+    //
+    // Check for objectId
+    //
+    if (!objectId)
+    {
+        NSString *message = NSLocalizedString(@"Missing parameter", @"Missing parameter");
+        NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain
+                                             code:MASIdentityManagementErrorMissingParameter
+                                         userInfo:@{NSLocalizedDescriptionKey : message}];
+        
+        if (completion)
+        {
+            completion(nil,localizedError);
+        }
+        
+        return;
+    }
+    
+    
     //
     //Build the PathURL
     //
@@ -593,7 +610,24 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
 
 - (void)updateGroupMember:(MASUser *)user withOperation:(MASGroupMemberOperation)operation completion:(void (^)(MASGroup *group, NSError *error))completion
 {
-    NSParameterAssert(user);
+    //
+    // Check for user
+    //
+    if (!user)
+    {
+        NSString *message = NSLocalizedString(@"Missing parameter", @"Missing parameter");
+        NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain
+                                                      code:MASIdentityManagementErrorMissingParameter
+                                                  userInfo:@{NSLocalizedDescriptionKey : message}];
+        
+        if (completion)
+        {
+            completion(nil,localizedError);
+        }
+        
+        return;
+    }
+    
     
     //
     //Check if is a new unsaved Group
