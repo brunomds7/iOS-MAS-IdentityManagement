@@ -33,7 +33,7 @@
  * @param value The 'NSString' attribute value.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttribute:(NSString *)attribute contains:(NSString *)value;
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute contains:(nonnull NSString *)value;
 
 
 /**
@@ -49,7 +49,7 @@
  * @param value The 'NSString' attribute value.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttribute:(NSString *)attribute endsWith:(NSString *)value;
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute endsWith:(nonnull NSString *)value;
 
 
 /**
@@ -64,7 +64,7 @@
  * @param value The 'NSString' attribute value.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttribute:(NSString *)attribute equalTo:(NSString *)value;
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute equalTo:(nonnull NSString *)value;
 
 
 /**
@@ -83,7 +83,7 @@
  * @param value The 'NSString' attribute value.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttribute:(NSString *)attribute greaterThan:(NSString *)value;
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute greaterThan:(nonnull NSString *)value;
 
 
 /**
@@ -104,7 +104,7 @@
  * @param value The 'NSString' attribute value.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttribute:(NSString *)attribute greaterThanOrEqualTo:(NSString *)value;
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute greaterThanOrEqualTo:(nonnull NSString *)value;
 
 
 /**
@@ -123,7 +123,7 @@
  * @param value The 'NSString' attribute value.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttribute:(NSString *)attribute lessThan:(NSString *)value;
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute lessThan:(nonnull NSString *)value;
 
 
 /**
@@ -144,7 +144,7 @@
  * @param value The 'NSString' attribute value.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttribute:(NSString *)attribute lessThanOrEqualTo:(NSString *)value;
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute lessThanOrEqualTo:(nonnull NSString *)value;
 
 
 /**
@@ -159,7 +159,7 @@
  * @param value The 'NSString' attribute value.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttribute:(NSString *)attribute notEqualTo:(NSString *)value;
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute notEqualTo:(nonnull NSString *)value;
 
 
 /**
@@ -191,7 +191,7 @@
  * @param value The 'NSString' attribute value.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)filterByAttribute:(NSString *)attribute startsWith:(NSString *)value;
++ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute startsWith:(nonnull NSString *)value;
 
 
 
@@ -207,7 +207,7 @@
  *
  * @return 'NSString' expression in SCIM 2.0 format.
  */
-- (NSString *)asStringFilterExpression;
+- (nonnull NSString *)asStringFilterExpression;
 
 
 /**
@@ -226,18 +226,6 @@
 
 
 /**
- * Create a 'MASFilter' that filters by an attribute, and attribute operator.
- *
- * The present filter in 'Filters'use this method to construct it's instance.
- *
- * @param attribute The 'NSString' attribute identifier.
- * @param attributeOperator The 'MASFilterAttributeOperator' attribute operator.
- * @return 'MASFilter'.
- */
-+ (nullable MASFilter *)filterByAttribute:(nonnull NSString *)attribute
-                    withAttributeOperator:(MASFilterAttributeOperator)attributeOperator;
-
-/**
  * Create a 'MASFilter' from a complete SCIM 2.0 expression as an 'NSString'.
  *
  * This is for advanced users that may want to completely write their own 
@@ -249,6 +237,6 @@
  * @param expression 'NSString' expression in SCIM 2.0 format.
  * @return 'MASFilter'.
  */
-+ (MASFilter *)fromStringFilterExpression:(NSString *)expression;
++ (nullable MASFilter *)fromStringFilterExpression:(nonnull NSString *)expression;
 
 @end

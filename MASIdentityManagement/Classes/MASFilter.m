@@ -68,6 +68,32 @@
 }
 
 
++ (MASFilter *)filterByAttribute:(NSString *)attribute withAttributeOperator:(MASFilterAttributeOperator)attributeOperator
+{
+    DLog(@"\n\ncalled with attribute: %@, with operator: %@ \n\n",
+         attribute, [MASIdentityManagementConstants attributeOperatorToString:attributeOperator]);
+    
+    //
+    // Check for missing parameters. Return nil filter if any non-optional parameters are missing.
+    //
+    if (!attribute)
+    {
+        return nil;
+    }
+    
+    NSMutableString *expression = [NSMutableString stringWithString:MASIdMgmtFilterPrefix];
+    
+    [expression appendString:attribute];
+    [expression appendString:MASIdMgmtEmptySpace];
+    [expression appendString:[MASIdentityManagementConstants attributeOperatorToString:attributeOperator]];
+    
+    MASFilter *filter = [[MASFilter alloc] initPrivate];
+    filter.expression = expression;
+    
+    return filter;
+}
+
+
 # pragma mark - Filters
 
 + (MASFilter *)filterByAttribute:(NSString *)attribute contains:(NSString *)value
@@ -175,32 +201,6 @@
     [expression appendString:[MASIdentityManagementConstants attributeOperatorToString:attributeOperator]];
     [expression appendString:MASIdMgmtEmptySpace];
     [expression appendFormat:@"\"%@\"", value];
-    
-    MASFilter *filter = [[MASFilter alloc] initPrivate];
-    filter.expression = expression;
-    
-    return filter;
-}
-
-
-+ (MASFilter *)filterByAttribute:(NSString *)attribute withAttributeOperator:(MASFilterAttributeOperator)attributeOperator
-{
-    DLog(@"\n\ncalled with attribute: %@, with operator: %@ \n\n",
-         attribute, [MASIdentityManagementConstants attributeOperatorToString:attributeOperator]);
-    
-    //
-    // Check for missing parameters. Return nil filter if any non-optional parameters are missing.
-    //
-    if (!attribute)
-    {
-        return nil;
-    }
-    
-    NSMutableString *expression = [NSMutableString stringWithString:MASIdMgmtFilterPrefix];
-    
-    [expression appendString:attribute];
-    [expression appendString:MASIdMgmtEmptySpace];
-    [expression appendString:[MASIdentityManagementConstants attributeOperatorToString:attributeOperator]];
     
     MASFilter *filter = [[MASFilter alloc] initPrivate];
     filter.expression = expression;

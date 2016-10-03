@@ -58,12 +58,12 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  *     Note, these will only take effect if there are no 'includedAttributes'. (optional)
  * @param completion Completion block with either the array of 'MASUser' or 'NSError'.
  */
-+ (void)getAllUsersSortedByAttribute:(NSString *)sortByAttribute
-    sortOrder:(MASFilteredRequestSortOrder)sortOrder
-    pageRange:(NSRange)pageRange
-    includedAttributes:(NSArray *)includedAttributes
-    excludedAttributes:(NSArray *)excludedAttributes
-    completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion;
++ (void)getAllUsersSortedByAttribute:(nullable NSString *)sortByAttribute
+                           sortOrder:(MASFilteredRequestSortOrder)sortOrder
+                           pageRange:(NSRange)pageRange
+                  includedAttributes:(nullable NSArray *)includedAttributes
+                  excludedAttributes:(nullable NSArray *)excludedAttributes
+                          completion:(nullable void (^)(NSArray * _Nullable userList, NSError * _Nullable error, NSUInteger totalResults))completion;
 
 
 /**
@@ -81,13 +81,13 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  *     Note, these will only take effect if there are no 'includedAttributes'. (optional)
  * @param completion Completion block with either the array of 'MASUser' or the 'NSError'.
  */
-+ (void)getAllUsersWithUsernameContaining:(NSString *)value
-    sortByAttribute:(NSString *)sortByAttribute
-    sortOrder:(MASFilteredRequestSortOrder)sortOrder
-    pageRange:(NSRange)pageRange
-    includedAttributes:(NSArray *)includedAttributes
-    excludedAttributes:(NSArray *)excludedAttributes
-    completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion;
++ (void)getAllUsersWithUsernameContaining:(nonnull NSString *)value
+                          sortByAttribute:(nullable NSString *)sortByAttribute
+                                sortOrder:(MASFilteredRequestSortOrder)sortOrder
+                                pageRange:(NSRange)pageRange
+                       includedAttributes:(nullable NSArray *)includedAttributes
+                       excludedAttributes:(nullable NSArray *)excludedAttributes
+                               completion:(nullable void (^)(NSArray * _Nullable userList, NSError * _Nullable error, NSUInteger totalResults))completion;
 
 
 /**
@@ -110,10 +110,10 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  *     Note, these will only take effect if there are no 'includedAttributes'. (optional)
  * @param completion Completion block with either the 'MASUser' or 'NSError'.
  */
-+ (void)getUserByObjectId:(NSString *)objectId
-    includedAttributes:(NSArray *)includedAttributes
-    excludedAttributes:(NSArray *)excludedAttributes
-    completion:(void (^)(MASUser *user, NSError *error))completion;
++ (void)getUserByObjectId:(nonnull NSString *)objectId
+       includedAttributes:(nullable NSArray *)includedAttributes
+       excludedAttributes:(nullable NSArray *)excludedAttributes
+               completion:(nullable void (^)(MASUser * _Nullable user, NSError * _Nullable error))completion;
 
 
 /**
@@ -122,8 +122,8 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  * @param userName The user name used to locate the 'MASUser'.
  * @param completion Completion block with either the 'MASUser' or 'NSError'.
  */
-+ (void)getUserByUserName:(NSString *)userName
-    completion:(void (^)(MASUser *user, NSError *error))completion;
++ (void)getUserByUserName:(nonnull NSString *)userName
+               completion:(nullable void (^)(MASUser * _Nullable user, NSError * _Nullable error))completion;
 
 
 /**
@@ -136,10 +136,10 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  *     Note, these will only take effect if there are no 'includedAttributes'. (optional)
  * @param completion Completion block with either the MASUser object or the Error message
  */
-+ (void)getUserByUserName:(NSString *)userName
-    includedAttributes:(NSArray *)includedAttributes
-    excludedAttributes:(NSArray *)excludedAttributes
-    completion:(void (^)(MASUser *user, NSError *error))completion;
++ (void)getUserByUserName:(nonnull NSString *)userName
+       includedAttributes:(nullable NSArray *)includedAttributes
+       excludedAttributes:(nullable NSArray *)excludedAttributes
+               completion:(nullable void (^)(MASUser * _Nullable user, NSError * _Nullable error))completion;
 
 
 
@@ -156,8 +156,8 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  * @param filter The 'MASFilteredRequest; to filter results.
  * @param completion Completion block with either the array of 'MASUser' objects or the 'NSError'.
  */
-+ (void)getUsersByFilteredRequest:(MASFilteredRequest *)filteredRequest
-    completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion;
++ (void)getUsersByFilteredRequest:(nonnull MASFilteredRequest *)filteredRequest
+                       completion:(nullable void (^)(NSArray * _Nullable userList, NSError * _Nullable error, NSUInteger totalResults))completion;
 
 
 
@@ -182,13 +182,13 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  *     Note, these will only take effect if there are no 'includedAttributes'. (optional)
  * @param completion Completion block with either the array of 'MASUser' objects or NSError.
  */
-+ (void)getUsersByFilterExpression:(NSString *)filterExpression
-    sortByAttribute:(NSString *)sortByAttribute
-    sortOrder:(MASFilteredRequestSortOrder)sortOrder
-    pageRange:(NSRange)pageRange
-    includedAttributes:(NSArray *)includedAttributes
-    excludedAttributes:(NSArray *)excludedAttributes
-    completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion;
++ (void)getUsersByFilterExpression:(nonnull NSString *)filterExpression
+                   sortByAttribute:(nullable NSString *)sortByAttribute
+                         sortOrder:(MASFilteredRequestSortOrder)sortOrder
+                         pageRange:(NSRange)pageRange
+                includedAttributes:(nullable NSArray *)includedAttributes
+                excludedAttributes:(nullable NSArray *)excludedAttributes
+                        completion:(nullable void (^)(NSArray * _Nullable userList, NSError * _Nullable error, NSUInteger totalResults))completion;
 
 
 
@@ -204,7 +204,7 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  *
  * @param completion Completion block with either the retrieved 'UIImage' or 'NSError'.
  */
-- (void)getThumbnailImageWithCompletion:(void (^)(UIImage *image, NSError *error))completion;
+- (void)getThumbnailImageWithCompletion:(nullable void (^)(UIImage * _Nullable image, NSError * _Nullable error))completion;
 
 
 
@@ -221,19 +221,19 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  * @param key The given identifying key for which to return the corresponding value.
  * @return The value associated with a given key.
  */
-- (id)objectForKey:(id)key;
+- (nullable id)objectForKey:(nonnull id)key;
 
 
 /**
  * Sets the object associated with a given key.
  *
  * @param object The object for `key`. A strong reference to the object is maintaned by MASObject.
- *   Raises an `NSInvalidArgumentException` if `object` is `nil`.  If you need to represent a `nil` 
+ *   Raises an `NSInvalidArgumentException` if `object` is `nil`.  If you need to represent a `nil`
  *   value - use `NSNull`.
  *
  * @param key The key for `object`. Raises an `NSInvalidArgumentException` if `key` is `nil`.
  */
-- (void)setObject:(id)object forKey:(id <NSCopying>)key;
+- (void)setObject:(nonnull id)object forKey:(nonnull id <NSCopying>)key;
 
 
 /**
@@ -244,7 +244,7 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  * @param key The key for which to return the corresponding value.
  * @return The value associated with a given key.
  */
-- (id)objectForKeyedSubscript:(id)key;
+- (nullable id)objectForKeyedSubscript:(nonnull id)key;
 
 
 /**
@@ -257,7 +257,7 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  *   If you need to represent a `nil` value - use `NSNull`.
  * @param key The key for `object`. Raises an `NSInvalidArgumentException` if `key` is `nil`.
  */
-- (void)setObject:(id)object forKeyedSubscript:(id <NSCopying>)key;
+- (void)setObject:(nonnull id)object forKeyedSubscript:(nonnull id <NSCopying>)key;
 
 
 
@@ -289,8 +289,8 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  * @param completion Completion block with either the array of 'MASUser' objects or NSError.
  */
 + (void)getAllUsers:(NSRange)pageRange
-    completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
-    DEPRECATED_MSG_ATTRIBUTE("getAllUsersSortedByAttribute: method instead.");
+         completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
+DEPRECATED_MSG_ATTRIBUTE("getAllUsersSortedByAttribute: method instead.");
 
 
 /**
@@ -305,9 +305,9 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  * @param completion Completion block with either the NSArray of MASUser object or the Error message
  */
 + (void)getUsersWithUsername:(NSString *)userName
-    range:(NSRange)pageRange
-    completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
-    DEPRECATED_MSG_ATTRIBUTE("getAllUsersWithUsernameContaining: method instead.");
+                       range:(NSRange)pageRange
+                  completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
+DEPRECATED_MSG_ATTRIBUTE("getAllUsersWithUsernameContaining: method instead.");
 
 
 /**
@@ -318,9 +318,9 @@ typedef NS_OPTIONS(NSInteger, MASUserAttributes)
  * @param completion Completion block with either the MASUser object or the Error message
  */
 + (void)getUserByObjectId:(NSString *)objectId
-    attributes:(MASUserAttributes)attributes
-    completion:(void (^)(MASUser *user, NSError *error))completion
-    DEPRECATED_MSG_ATTRIBUTE("getUserByObjectId:includedAttributes:excludedAttributes: method instead.");
+               attributes:(MASUserAttributes)attributes
+               completion:(void (^)(MASUser *user, NSError *error))completion
+DEPRECATED_MSG_ATTRIBUTE("getUserByObjectId:includedAttributes:excludedAttributes: method instead.");
 
 @end
 

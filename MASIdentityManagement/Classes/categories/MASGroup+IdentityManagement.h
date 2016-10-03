@@ -33,7 +33,7 @@
  *
  * @param completion Completion block with either the array of 'MASGroup' or 'NSError'.
  */
-+ (void)getAllGroupsWithCompletion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion;
++ (void)getAllGroupsWithCompletion:(nullable void (^)(NSArray * _Nullable groupList, NSError * _Nullable error, NSUInteger totalResults))completion;
 
 
 /**
@@ -49,12 +49,12 @@
  *     Note, these will only take effect if there are no 'includedAttributes'. (optional)
  * @param completion Completion block with either the array of 'MASGroup' or 'NSError'.
  */
-+ (void)getAllGroupsSortedByAttribute:(NSString *)sortByAttribute
-    sortOrder:(MASFilteredRequestSortOrder)sortOrder
-    pageRange:(NSRange)pageRange
-    includedAttributes:(NSArray *)includedAttributes
-    excludedAttributes:(NSArray *)excludedAttributes
-    completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion;
++ (void)getAllGroupsSortedByAttribute:(nonnull NSString *)sortByAttribute
+                            sortOrder:(MASFilteredRequestSortOrder)sortOrder
+                            pageRange:(NSRange)pageRange
+                   includedAttributes:(nullable NSArray *)includedAttributes
+                   excludedAttributes:(nullable NSArray *)excludedAttributes
+                           completion:(nullable void (^)(NSArray * _Nullable groupList, NSError * _Nullable error, NSUInteger totalResults))completion;
 
 
 /**
@@ -77,10 +77,10 @@
  *     Note, these will only take effect if there are no 'includedAttributes'. (optional)
  * @param completion Completion block with either the 'MASGroup' or 'NSError'.
  */
-+ (void)getGroupByObjectId:(NSString *)objectId
-    includedAttributes:(NSArray *)includedAttributes
-    excludedAttributes:(NSArray *)excludedAttributes
-    completion:(void (^)(MASUser *user, NSError *error))completion;
++ (void)getGroupByObjectId:(nonnull NSString *)objectId
+        includedAttributes:(nullable NSArray *)includedAttributes
+        excludedAttributes:(nullable NSArray *)excludedAttributes
+                completion:(nullable void (^)(MASUser * _Nullable user, NSError * _Nullable error))completion;
 
 
 /**
@@ -89,8 +89,8 @@
  * @param groupName The group name used to locate the 'MASGroup'.
  * @param completion Completion block with either the 'MASGroup' or 'NSError'.
  */
-+ (void)getGroupByGroupName:(NSString *)groupName
-    completion:(void (^)(MASGroup *group, NSError *error))completion;
++ (void)getGroupByGroupName:(nonnull NSString *)groupName
+                 completion:(nullable void (^)(MASGroup * _Nullable group, NSError * _Nullable error))completion;
 
 
 /**
@@ -103,10 +103,10 @@
  *     Note, these will only take effect if there are no 'includedAttributes'. (optional)
  * @param completion Completion block with either the the 'MASGroup' or 'NSError'.
  */
-+ (void)getGroupByGroupName:(NSString *)groupName
-    includedAttributes:(NSArray *)includedAttributes
-    excludedAttributes:(NSArray *)excludedAttributes
-    completion:(void (^)(MASUser *user, NSError *error))completion;
++ (void)getGroupByGroupName:(nonnull NSString *)groupName
+         includedAttributes:(nullable NSArray *)includedAttributes
+         excludedAttributes:(nullable NSArray *)excludedAttributes
+                 completion:(nullable void (^)(MASUser * _Nullable user, NSError * _Nullable error))completion;
 
 
 
@@ -123,8 +123,8 @@
  * @param filter The 'MASFilteredRequest; to filter results.
  * @param completion Completion block with either the array of 'MASGroup' objects or the 'NSError'.
  */
-+ (void)getGroupsByFilteredRequest:(MASFilteredRequest *)filteredRequest
-    completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion;
++ (void)getGroupsByFilteredRequest:(nonnull MASFilteredRequest *)filteredRequest
+                        completion:(nullable void (^)(NSArray * _Nullable groupList, NSError * _Nullable error, NSUInteger totalResults))completion;
 
 
 
@@ -149,13 +149,13 @@
  *     Note, these will only take effect if there are no 'includedAttributes'. (optional)
  * @param completion Completion block with either the array of 'MASGroup' objects or NSError.
  */
-+ (void)getGroupsByFilterExpression:(NSString *)filterExpression
-    sortByAttribute:(NSString *)sortByAttribute
-    sortOrder:(MASFilteredRequestSortOrder)sortOrder
-    pageRange:(NSRange)pageRange
-    includedAttributes:(NSArray *)includedAttributes
-    excludedAttributes:(NSArray *)excludedAttributes
-    completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion;
++ (void)getGroupsByFilterExpression:(nonnull NSString *)filterExpression
+                    sortByAttribute:(nullable NSString *)sortByAttribute
+                          sortOrder:(MASFilteredRequestSortOrder)sortOrder
+                          pageRange:(NSRange)pageRange
+                 includedAttributes:(nullable NSArray *)includedAttributes
+                 excludedAttributes:(nullable NSArray *)excludedAttributes
+                         completion:(nullable void (^)(NSArray * _Nullable groupList, NSError * _Nullable error, NSUInteger totalResults))completion;
 
 
 
@@ -170,7 +170,7 @@
  *
  * @param completion Completion block with either the MASGroup object or the Error message.
  */
-- (void)saveInBackgroundWithCompletion:(void (^)(MASGroup *group, NSError *error))completion;
+- (void)saveInBackgroundWithCompletion:(nullable void (^)(MASGroup * _Nullable group, NSError * _Nullable error))completion;
 
 
 /**
@@ -178,7 +178,7 @@
  *
  * @param completion Completion block with either Success boolean or the Error message.
  */
-- (void)deleteInBackgroundWithCompletion:(void (^)(BOOL success, NSError *error))completion;
+- (void)deleteInBackgroundWithCompletion:(nullable void (^)(BOOL success, NSError * _Nullable error))completion;
 
 
 /**
@@ -227,12 +227,12 @@
  * @param completion Completion block with either the NSArray of MASGroup object or the Error message
  */
 + (void)getAllGroups:(NSRange)pageRange
-    completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion
-    DEPRECATED_MSG_ATTRIBUTE("getAllGroupsSortedByAttribute: method instead.");
+          completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion
+DEPRECATED_MSG_ATTRIBUTE("getAllGroupsSortedByAttribute: method instead.");
 
 
 /**
- * Retrieves all 'MASGroup' objects that matches the GroupName passed as parameter. It uses a default 
+ * Retrieves all 'MASGroup' objects that matches the GroupName passed as parameter. It uses a default
  * of 10 for the itemsPerPage for the pagination.
  *
  * WARNING: this is not an 'equalTo' match on the groupName, rather it is a 'contains' match.
@@ -242,13 +242,13 @@
  * @param completion Completion block with either the arrau of 'MASGroup' or 'NSError'.
  */
 + (void)getGroupsWithName:(NSString *)groupName
-    range:(NSRange)pageRange
-    completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion
-    DEPRECATED_MSG_ATTRIBUTE("getGroupsByFilteredRequest: method instead.");
+                    range:(NSRange)pageRange
+               completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion
+DEPRECATED_MSG_ATTRIBUTE("getGroupsByFilteredRequest: method instead.");
 
 
 /**
- * Retrieves all 'MASGroup' objects that matches the Owner passed as parameter. It uses a default of 10 
+ * Retrieves all 'MASGroup' objects that matches the Owner passed as parameter. It uses a default of 10
  * for the itemsPerPage for the pagination.
  *
  * @param owner The owner to be used in the search.
@@ -256,9 +256,9 @@
  * @param completion Completion block with either the array of 'MASGroup' or 'NSError'.
  */
 + (void)getGroupsWithOwner:(NSString *)owner
-    range:(NSRange)pageRange
-    completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion
-    DEPRECATED_MSG_ATTRIBUTE("getGroupsByFilteredRequest: method instead.");
+                     range:(NSRange)pageRange
+                completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion
+DEPRECATED_MSG_ATTRIBUTE("getGroupsByFilteredRequest: method instead.");
 
 
 /**
@@ -270,9 +270,9 @@
  * @param completion Completion block with either the array of 'MASGroup' or the 'NSError'.
  */
 + (void)getGroupsWithMember:(MASUser *)user
-    range:(NSRange)pageRange
-    completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion
-    DEPRECATED_MSG_ATTRIBUTE("getGroupsByFilteredRequest: method instead.");
+                      range:(NSRange)pageRange
+                 completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion
+DEPRECATED_MSG_ATTRIBUTE("getGroupsByFilteredRequest: method instead.");
 
 
 /**
@@ -283,8 +283,8 @@
  * @param completion Completion block with either the array of 'MASGroup' or 'NSError'.
  */
 + (void)getGroupsUsingFilter:(NSString *)filter
-    range:(NSRange)pageRange
-    completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion
-    DEPRECATED_MSG_ATTRIBUTE("getGroupsByFilteredRequest: method instead.");
+                       range:(NSRange)pageRange
+                  completion:(void (^)(NSArray *groupList, NSError *error, NSUInteger totalResults))completion
+DEPRECATED_MSG_ATTRIBUTE("getGroupsByFilteredRequest: method instead.");
 
 @end
