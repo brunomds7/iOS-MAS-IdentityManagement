@@ -13,9 +13,6 @@
 #import <objc/runtime.h>
 
 
-static NSString *const kMASUserIsCurrentUserPropertyKey = @"isCurrentUser";
-
-
 @implementation MASUser (MASIdentityManagementPrivate)
 
 
@@ -90,19 +87,6 @@ static NSString *const kMASUserIsCurrentUserPropertyKey = @"isCurrentUser";
 - (void)setObjectId:(NSString *)objectId
 {
     objc_setAssociatedObject(self, &MASIdMgmtUserAttributeId, objectId, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (BOOL)isCurrentUser
-{
-    NSNumber *isCurrentUserNumber = objc_getAssociatedObject(self, &kMASUserIsCurrentUserPropertyKey);
-    
-    return [isCurrentUserNumber boolValue];
-}
-
-- (void)setIsCurrentUser:(BOOL)isCurrentUser
-{
-    objc_setAssociatedObject(self, &kMASUserIsCurrentUserPropertyKey, [NSNumber numberWithBool:isCurrentUser], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 
@@ -257,8 +241,6 @@ static NSString *const kMASUserIsCurrentUserPropertyKey = @"isCurrentUser";
 {
     [super encodeWithCoder:aCoder];
 
-    if(self.isCurrentUser) [aCoder encodeBool:self.isCurrentUser forKey:kMASUserIsCurrentUserPropertyKey];
-
     if(self.userName) [aCoder encodeObject:self.userName forKey:MASIdMgmtUserAttributeUserName];
     if(self.familyName) [aCoder encodeObject:self.familyName forKey:MASIdMgmtUserAttributeFamilyName];
     if(self.givenName) [aCoder encodeObject:self.givenName forKey:MASIdMgmtUserAttributeGivenName];
@@ -276,8 +258,6 @@ static NSString *const kMASUserIsCurrentUserPropertyKey = @"isCurrentUser";
 {
     if(self = [super initWithCoder:aDecoder])
     {
-        self.isCurrentUser = [aDecoder decodeBoolForKey:kMASUserIsCurrentUserPropertyKey];
-        
         self.userName = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributeUserName];
         self.familyName = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributeFamilyName];
         self.givenName = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributeGivenName];
