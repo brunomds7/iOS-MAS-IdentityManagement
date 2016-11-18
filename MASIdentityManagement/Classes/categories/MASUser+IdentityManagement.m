@@ -16,6 +16,7 @@
 #import "MASUser+MASIdentityManagementPrivate.h"
 #import "Helpers.h"
 #import "SearchResponseModel.h"
+#import "NSError+MASIdentityManagementPrivate.h"
 
 
 static NSString *const kMASUserPathFormat = @"%@/Users";
@@ -145,10 +146,7 @@ typedef void (^GetUsersFailure)(NSError *error);
     //
     if (!objectId)
     {
-        NSString *message = NSLocalizedString(@"Missing parameter", @"Missing parameter");
-        NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain
-                                                      code:MASIdentityManagementErrorMissingParameter
-                                                  userInfo:@{NSLocalizedDescriptionKey : message}];
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorMissingParameter errorDomain:kSDKErrorDomain];
         
         if (completion)
         {
@@ -833,13 +831,7 @@ typedef void (^GetUsersFailure)(NSError *error);
         //
         else
         {
-            NSString *errorMessage = NSLocalizedString(@"MASResponseInfoBody is empty", nil);
-            localizedError = [NSError errorWithDomain:kSDKErrorDomain
-                code:MASIdentityManagementErrorMASResponseInfoBodyEmpty
-                userInfo:
-                @{
-                    NSLocalizedDescriptionKey : errorMessage
-                }];
+            localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorMASResponseInfoBodyEmpty errorDomain:kSDKErrorDomain];
         }
                 
         //

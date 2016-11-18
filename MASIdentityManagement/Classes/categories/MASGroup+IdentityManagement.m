@@ -14,6 +14,7 @@
 #import "MASFilteredRequest.h"
 #import "MASGroup+MASIdentityManagementPrivate.h"
 #import "Helpers.h"
+#import "NSError+MASIdentityManagementPrivate.h"
 
 
 static NSString *const kMASGroupPathFormat = @"%@/Groups";
@@ -101,10 +102,7 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //
     if (!objectId)
     {
-        NSString *message = NSLocalizedString(@"Missing parameter", @"Missing parameter");
-        NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain
-                                             code:MASIdentityManagementErrorMissingParameter
-                                         userInfo:@{NSLocalizedDescriptionKey : message}];
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorMissingParameter errorDomain:kSDKErrorDomain];
         
         if (completion)
         {
@@ -479,9 +477,7 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
                 }
                 else {
                     
-                    NSString *message = NSLocalizedString(@"MASResponseIndoBody is empty", @"MASResponseIndoBody is empty");
-                    
-                    NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain code:MASIdentityManagementErrorMASResponseInfoBodyEmpty userInfo:@{NSLocalizedDescriptionKey : message}];
+                    NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorMASResponseInfoBodyEmpty errorDomain:kSDKErrorDomain];
                     
                     if (completion) {
                         
@@ -541,9 +537,7 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
                 }
                 else {
                     
-                    NSString *message = NSLocalizedString(@"MASResponseIndoBody is empty", @"MASResponseIndoBody is empty");
-                    
-                    NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain code:MASIdentityManagementErrorMASResponseInfoBodyEmpty userInfo:@{NSLocalizedDescriptionKey : message}];
+                    NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorMASResponseInfoBodyEmpty errorDomain:kSDKErrorDomain];
                     
                     if (completion) {
                         
@@ -615,10 +609,7 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //
     if (!user)
     {
-        NSString *message = NSLocalizedString(@"Missing parameter", @"Missing parameter");
-        NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain
-                                                      code:MASIdentityManagementErrorMissingParameter
-                                                  userInfo:@{NSLocalizedDescriptionKey : message}];
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorMissingParameter errorDomain:kSDKErrorDomain];
         
         if (completion)
         {
@@ -634,9 +625,7 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //
     if (!self.objectId) {
         
-        NSString *message = NSLocalizedString(@"Group not found. Perform SAVE action before adding members", Nil);
-        
-        NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain code:MASIdentityManagementErrorGroupNotFound userInfo:@{NSLocalizedDescriptionKey : message}];
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorGroupNotFound errorDomain:kSDKErrorDomain];
         
         if (completion) {
             
@@ -708,9 +697,7 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
             }
             else {
                 
-                NSString *message = NSLocalizedString(@"MASResponseIndoBody is empty", @"MASResponseIndoBody is empty");
-                
-                NSError *localizedError = [NSError errorWithDomain:kSDKErrorDomain code:MASIdentityManagementErrorMASResponseInfoBodyEmpty userInfo:@{NSLocalizedDescriptionKey : message}];
+                NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorMASResponseInfoBodyEmpty errorDomain:kSDKErrorDomain];
                 
                 if (completion) {
                     
