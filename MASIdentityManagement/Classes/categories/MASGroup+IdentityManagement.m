@@ -117,8 +117,26 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //Build the PathURL
     //
     NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat,[[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
-    pathURL = [NSString stringWithFormat:kMASGroupPathDoubleObjectFormat, pathURL, objectId];
     
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError);
+        }
+        
+        return;
+    }
+    
+    //
+    // Construct pathURL with objectId
+    //
+    pathURL = [NSString stringWithFormat:kMASGroupPathDoubleObjectFormat, pathURL, objectId];
     
     //
     //Use MAS Object to make the security call to the Gateway
@@ -322,6 +340,21 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
     
     //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError, 0);
+        }
+        
+        return;
+    }
+    
+    //
     // Filter Request
     //
     if(filteredRequest)
@@ -432,6 +465,21 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //Build the PathURL
     //
     NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError);
+        }
+        
+        return;
+    }
     
     //
     //Build Parameters
@@ -563,6 +611,25 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //Build the PathURL
     //
     NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError);
+        }
+        
+        return;
+    }
+    
+    //
+    // Construct pathURL with objectId
+    //
     pathURL = [NSString stringWithFormat:kMASGroupPathDoubleObjectFormat, pathURL, self.objectId];
     
     //
@@ -640,6 +707,25 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     // Build the PathURL
     //
     NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError);
+        }
+        
+        return;
+    }
+    
+    //
+    // Construct pathURL with objectId
+    //
     pathURL = [NSString stringWithFormat:kMASGroupPathDoubleObjectFormat, pathURL, self.objectId];
     
     
@@ -747,6 +833,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //
     NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
     
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError, 0);
+        }
+        
+        return;
+    }
     
     //
     //Build Parameters
@@ -818,6 +918,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //
     NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
     
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError, 0);
+        }
+        
+        return;
+    }
     
     //
     //Build Parameters
@@ -889,6 +1003,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //
     NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
     
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError, 0);
+        }
+        
+        return;
+    }
     
     //
     // Build Parameters
@@ -960,6 +1088,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //
     NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
     
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError, 0);
+        }
+        
+        return;
+    }
     
     //
     // Build Parameters
@@ -1032,6 +1174,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //
     NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
     
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError, 0);
+        }
+        
+        return;
+    }
     
     //
     //Build Parameters

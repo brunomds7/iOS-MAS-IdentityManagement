@@ -54,6 +54,7 @@
             // Validation
             //
         case MASIdentityManagementErrorMissingParameter: return NSLocalizedString(@"Missing parameter", @"Missing parameter");
+        case MASIdentityManagementErrorInvalidEndpoint: return NSLocalizedString(@"SCIM endpoint in the configuration is invalid or missing.", @"SCIM endpoint in the configuration is invalid or missing.");
             
         default: return [NSString stringWithFormat:@"Unrecognized error code of value: %ld", (long)errorCode];
     }

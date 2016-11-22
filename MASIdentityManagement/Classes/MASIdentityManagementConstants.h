@@ -203,7 +203,8 @@ typedef NS_ENUM (NSUInteger, MASIdentityManagementError)
     //
     // Validation
     //
-    MASIdentityManagementErrorMissingParameter = 400103
+    MASIdentityManagementErrorMissingParameter = 400103,
+    MASIdentityManagementErrorInvalidEndpoint = 400104,
 };
 
 

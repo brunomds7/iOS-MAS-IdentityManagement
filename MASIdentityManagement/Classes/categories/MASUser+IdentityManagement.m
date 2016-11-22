@@ -161,6 +161,25 @@ typedef void (^GetUsersFailure)(NSError *error);
     //
     NSString *pathURL = [NSString stringWithFormat:kMASUserPathFormat,
         [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError);
+        }
+        
+        return;
+    }
+    
+    //
+    // Construct pathURL with objectId
+    //
     pathURL = [NSString stringWithFormat:kMASUserPathDoubleObjectFormat, pathURL, objectId];
     
     //
@@ -368,6 +387,21 @@ typedef void (^GetUsersFailure)(NSError *error);
         [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
     
     //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError, 0);
+        }
+        
+        return;
+    }
+    
+    //
     // Filter Request
     //
     if(filteredRequest)
@@ -546,6 +580,20 @@ typedef void (^GetUsersFailure)(NSError *error);
     NSString *pathURL = [NSString stringWithFormat:kMASUserPathFormat,
         [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
     
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError, 0);
+        }
+        
+        return;
+    }
     
     //
     // Build Parameters
@@ -626,6 +674,21 @@ typedef void (^GetUsersFailure)(NSError *error);
     NSString *pathURL = [NSString stringWithFormat:kMASUserPathFormat,
         [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
 
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError, 0);
+        }
+        
+        return;
+    }
+    
     //
     // Build Parameters
     //
@@ -786,6 +849,21 @@ typedef void (^GetUsersFailure)(NSError *error);
         [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey],
         objectId,
         queryPath];
+    
+    //
+    // Validate pathURL
+    //
+    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    {
+        NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
+        
+        if (completion)
+        {
+            completion(nil, localizedError);
+        }
+        
+        return;
+    }
     
     //
     // Execute the operation
