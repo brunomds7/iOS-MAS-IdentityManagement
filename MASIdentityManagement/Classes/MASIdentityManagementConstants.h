@@ -190,9 +190,21 @@ static NSString *const kSDKErrorDomain = @"com.ca.MASIdentityManagement:ErrorDom
  */
 typedef NS_ENUM (NSUInteger, MASIdentityManagementError)
 {
-    MASIdentityManagementErrorMASResponseInfoBodyEmpty = 101,
-    MASIdentityManagementErrorGroupNotFound = 102,
-    MASIdentityManagementErrorMissingParameter = 103
+    //
+    // Response
+    //
+    MASIdentityManagementErrorMASResponseInfoBodyEmpty = 400101,
+    
+    //
+    // Group
+    //
+    MASIdentityManagementErrorGroupNotFound = 400102,
+    
+    //
+    // Validation
+    //
+    MASIdentityManagementErrorMissingParameter = 400103,
+    MASIdentityManagementErrorInvalidEndpoint = 400104,
 };
 
 

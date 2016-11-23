@@ -35,10 +35,6 @@
 		1076F9AA1B4EE52700F5A0DB /* MASIdentityManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1076F99E1B4EE52700F5A0DB /* MASIdentityManagement.framework */; };
 		10C69EBD1B898EFD006C5FC5 /* MASIdentityManagementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C69EBB1B898EFD006C5FC5 /* MASIdentityManagementTests.m */; };
 		A46E14F51C7120B300365262 /* MASIdentityManagementConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A46E14F31C7120B300365262 /* MASIdentityManagementConstants.m */; };
-		A4C4DE281C7118DE006223CD /* MASGroup+MASIdentityManagementPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = A4C4DE141C7118DE006223CD /* MASGroup+MASIdentityManagementPrivate.h */; };
-		A4C4DE291C7118DE006223CD /* MASGroup+MASIdentityManagementPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C4DE151C7118DE006223CD /* MASGroup+MASIdentityManagementPrivate.m */; };
-		A4C4DE2A1C7118DE006223CD /* MASUser+MASIdentityManagementPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = A4C4DE161C7118DE006223CD /* MASUser+MASIdentityManagementPrivate.h */; };
-		A4C4DE2B1C7118DE006223CD /* MASUser+MASIdentityManagementPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C4DE171C7118DE006223CD /* MASUser+MASIdentityManagementPrivate.m */; };
 		A4C4DE2F1C7118DE006223CD /* MASFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C4DE1B1C7118DE006223CD /* MASFilter.m */; };
 		A4C4DE311C7118DE006223CD /* MASFilteredRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C4DE1D1C7118DE006223CD /* MASFilteredRequest.m */; };
 		A4C4DE3E1C711925006223CD /* MASGroup+IdentityManagement.h in Headers */ = {isa = PBXBuildFile; fileRef = A4C4DE3C1C711925006223CD /* MASGroup+IdentityManagement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +49,12 @@
 		A4DB8D091C71452E00381B81 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DB8D051C71452E00381B81 /* Helpers.m */; };
 		A4DB8D0A1C71452E00381B81 /* SearchResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = A4DB8D061C71452E00381B81 /* SearchResponseModel.h */; };
 		A4DB8D0B1C71452E00381B81 /* SearchResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DB8D071C71452E00381B81 /* SearchResponseModel.m */; };
+		CB2922B21DDE770D008651FD /* MASGroup+MASIdentityManagementPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = CB2922AE1DDE770D008651FD /* MASGroup+MASIdentityManagementPrivate.h */; };
+		CB2922B31DDE770D008651FD /* MASGroup+MASIdentityManagementPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2922AF1DDE770D008651FD /* MASGroup+MASIdentityManagementPrivate.m */; };
+		CB2922B41DDE770D008651FD /* MASUser+MASIdentityManagementPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = CB2922B01DDE770D008651FD /* MASUser+MASIdentityManagementPrivate.h */; };
+		CB2922B51DDE770D008651FD /* MASUser+MASIdentityManagementPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2922B11DDE770D008651FD /* MASUser+MASIdentityManagementPrivate.m */; };
+		CB2922B81DDE773D008651FD /* NSError+MASIdentityManagementPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = CB2922B61DDE773D008651FD /* NSError+MASIdentityManagementPrivate.h */; };
+		CB2922B91DDE773D008651FD /* NSError+MASIdentityManagementPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2922B71DDE773D008651FD /* NSError+MASIdentityManagementPrivate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,10 +111,6 @@
 		A40165851C320B23008B09DE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A46E14F21C7120B300365262 /* MASIdentityManagementConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASIdentityManagementConstants.h; sourceTree = "<group>"; };
 		A46E14F31C7120B300365262 /* MASIdentityManagementConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASIdentityManagementConstants.m; sourceTree = "<group>"; };
-		A4C4DE141C7118DE006223CD /* MASGroup+MASIdentityManagementPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASGroup+MASIdentityManagementPrivate.h"; sourceTree = "<group>"; };
-		A4C4DE151C7118DE006223CD /* MASGroup+MASIdentityManagementPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASGroup+MASIdentityManagementPrivate.m"; sourceTree = "<group>"; };
-		A4C4DE161C7118DE006223CD /* MASUser+MASIdentityManagementPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASUser+MASIdentityManagementPrivate.h"; sourceTree = "<group>"; };
-		A4C4DE171C7118DE006223CD /* MASUser+MASIdentityManagementPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASUser+MASIdentityManagementPrivate.m"; sourceTree = "<group>"; };
 		A4C4DE1A1C7118DE006223CD /* MASFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASFilter.h; sourceTree = "<group>"; };
 		A4C4DE1B1C7118DE006223CD /* MASFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASFilter.m; sourceTree = "<group>"; };
 		A4C4DE1C1C7118DE006223CD /* MASFilteredRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASFilteredRequest.h; sourceTree = "<group>"; };
@@ -128,6 +126,12 @@
 		A4DB8D051C71452E00381B81 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		A4DB8D061C71452E00381B81 /* SearchResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResponseModel.h; sourceTree = "<group>"; };
 		A4DB8D071C71452E00381B81 /* SearchResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResponseModel.m; sourceTree = "<group>"; };
+		CB2922AE1DDE770D008651FD /* MASGroup+MASIdentityManagementPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASGroup+MASIdentityManagementPrivate.h"; sourceTree = "<group>"; };
+		CB2922AF1DDE770D008651FD /* MASGroup+MASIdentityManagementPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASGroup+MASIdentityManagementPrivate.m"; sourceTree = "<group>"; };
+		CB2922B01DDE770D008651FD /* MASUser+MASIdentityManagementPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASUser+MASIdentityManagementPrivate.h"; sourceTree = "<group>"; };
+		CB2922B11DDE770D008651FD /* MASUser+MASIdentityManagementPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASUser+MASIdentityManagementPrivate.m"; sourceTree = "<group>"; };
+		CB2922B61DDE773D008651FD /* NSError+MASIdentityManagementPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+MASIdentityManagementPrivate.h"; sourceTree = "<group>"; };
+		CB2922B71DDE773D008651FD /* NSError+MASIdentityManagementPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+MASIdentityManagementPrivate.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,10 +239,7 @@
 		A4C4DE131C7118DE006223CD /* _private_ */ = {
 			isa = PBXGroup;
 			children = (
-				A4C4DE141C7118DE006223CD /* MASGroup+MASIdentityManagementPrivate.h */,
-				A4C4DE151C7118DE006223CD /* MASGroup+MASIdentityManagementPrivate.m */,
-				A4C4DE161C7118DE006223CD /* MASUser+MASIdentityManagementPrivate.h */,
-				A4C4DE171C7118DE006223CD /* MASUser+MASIdentityManagementPrivate.m */,
+				CB2922AD1DDE770D008651FD /* categories */,
 			);
 			path = _private_;
 			sourceTree = "<group>";
@@ -265,6 +266,19 @@
 			path = _deprecated_;
 			sourceTree = "<group>";
 		};
+		CB2922AD1DDE770D008651FD /* categories */ = {
+			isa = PBXGroup;
+			children = (
+				CB2922AE1DDE770D008651FD /* MASGroup+MASIdentityManagementPrivate.h */,
+				CB2922AF1DDE770D008651FD /* MASGroup+MASIdentityManagementPrivate.m */,
+				CB2922B01DDE770D008651FD /* MASUser+MASIdentityManagementPrivate.h */,
+				CB2922B11DDE770D008651FD /* MASUser+MASIdentityManagementPrivate.m */,
+				CB2922B61DDE773D008651FD /* NSError+MASIdentityManagementPrivate.h */,
+				CB2922B71DDE773D008651FD /* NSError+MASIdentityManagementPrivate.m */,
+			);
+			path = categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -274,13 +288,14 @@
 			files = (
 				A4C4DE451C7119E5006223CD /* MASIdentityManagement.h in Headers */,
 				A4DB8CF01C71315200381B81 /* MASIdentityManagementConstants.h in Headers */,
+				CB2922B41DDE770D008651FD /* MASUser+MASIdentityManagementPrivate.h in Headers */,
+				CB2922B21DDE770D008651FD /* MASGroup+MASIdentityManagementPrivate.h in Headers */,
 				A4DB8CEE1C71314D00381B81 /* MASFilter.h in Headers */,
 				A4DB8CEF1C71315000381B81 /* MASFilteredRequest.h in Headers */,
+				CB2922B81DDE773D008651FD /* NSError+MASIdentityManagementPrivate.h in Headers */,
 				A4DB8D0A1C71452E00381B81 /* SearchResponseModel.h in Headers */,
 				A4C4DE3E1C711925006223CD /* MASGroup+IdentityManagement.h in Headers */,
 				A4C4DE421C711935006223CD /* MASUser+IdentityManagement.h in Headers */,
-				A4C4DE281C7118DE006223CD /* MASGroup+MASIdentityManagementPrivate.h in Headers */,
-				A4C4DE2A1C7118DE006223CD /* MASUser+MASIdentityManagementPrivate.h in Headers */,
 				A4DB8D081C71452E00381B81 /* Helpers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,14 +459,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB2922B91DDE773D008651FD /* NSError+MASIdentityManagementPrivate.m in Sources */,
 				A4C4DE311C7118DE006223CD /* MASFilteredRequest.m in Sources */,
 				A4C4DE431C711935006223CD /* MASUser+IdentityManagement.m in Sources */,
-				A4C4DE291C7118DE006223CD /* MASGroup+MASIdentityManagementPrivate.m in Sources */,
 				A4C4DE2F1C7118DE006223CD /* MASFilter.m in Sources */,
 				A46E14F51C7120B300365262 /* MASIdentityManagementConstants.m in Sources */,
+				CB2922B51DDE770D008651FD /* MASUser+MASIdentityManagementPrivate.m in Sources */,
 				A4C4DE3F1C711925006223CD /* MASGroup+IdentityManagement.m in Sources */,
 				A4DB8D091C71452E00381B81 /* Helpers.m in Sources */,
-				A4C4DE2B1C7118DE006223CD /* MASUser+MASIdentityManagementPrivate.m in Sources */,
+				CB2922B31DDE770D008651FD /* MASGroup+MASIdentityManagementPrivate.m in Sources */,
 				A4DB8D0B1C71452E00381B81 /* SearchResponseModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
