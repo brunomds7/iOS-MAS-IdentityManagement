@@ -112,16 +112,15 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         return;
     }
     
-    
     //
-    //Build the PathURL
+    // SCIM endpoint from configuration
     //
-    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat,[[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
     
     //
     // Validate pathURL
     //
-    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    if (!scimEndpoint || ![scimEndpoint isKindOfClass:[NSString class]] || scimEndpoint.length == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
         
@@ -132,6 +131,11 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         
         return;
     }
+    
+    //
+    //Build the PathURL
+    //
+    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat,scimEndpoint];
     
     //
     // Construct pathURL with objectId
@@ -334,15 +338,14 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     DLog(@"\n\nThe filtered request is: %@\n\n", [filteredRequest asStringQueryPath]);
     
     //
-    // Build the PathURL
+    // SCIM endpoint from configuration
     //
-    NSMutableString *pathURL = [NSMutableString stringWithFormat:kMASGroupPathFormat,
-        [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
     
     //
     // Validate pathURL
     //
-    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    if (!scimEndpoint || ![scimEndpoint isKindOfClass:[NSString class]] || scimEndpoint.length == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
         
@@ -353,6 +356,11 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         
         return;
     }
+    
+    //
+    // Build the PathURL
+    //
+    NSMutableString *pathURL = [NSMutableString stringWithFormat:kMASGroupPathFormat, scimEndpoint];
     
     //
     // Filter Request
@@ -462,14 +470,14 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
 - (void)saveInBackgroundWithCompletion:(void (^)(MASGroup *group, NSError *error))completion
 {
     //
-    //Build the PathURL
+    // SCIM endpoint from configuration
     //
-    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
     
     //
     // Validate pathURL
     //
-    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    if (!scimEndpoint || ![scimEndpoint isKindOfClass:[NSString class]] || scimEndpoint.length == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
         
@@ -480,6 +488,11 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         
         return;
     }
+    
+    //
+    //Build the PathURL
+    //
+    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, scimEndpoint];
     
     //
     //Build Parameters
@@ -608,24 +621,29 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
 - (void)deleteInBackgroundWithCompletion:(void (^)(BOOL success, NSError *error))completion
 {
     //
-    //Build the PathURL
+    // SCIM endpoint from configuration
     //
-    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
     
     //
     // Validate pathURL
     //
-    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    if (!scimEndpoint || ![scimEndpoint isKindOfClass:[NSString class]] || scimEndpoint.length == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
         
         if (completion)
         {
-            completion(nil, localizedError);
+            completion(NO, localizedError);
         }
         
         return;
     }
+    
+    //
+    //Build the PathURL
+    //
+    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, scimEndpoint];
     
     //
     // Construct pathURL with objectId
@@ -702,16 +720,15 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         return;
     }
     
-    
     //
-    // Build the PathURL
+    // SCIM endpoint from configuration
     //
-    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
     
     //
     // Validate pathURL
     //
-    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    if (!scimEndpoint || ![scimEndpoint isKindOfClass:[NSString class]] || scimEndpoint.length == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
         
@@ -722,6 +739,11 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         
         return;
     }
+    
+    //
+    // Build the PathURL
+    //
+    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, scimEndpoint];
     
     //
     // Construct pathURL with objectId
@@ -827,16 +849,15 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         pageRange = defaultRange;
     }
     
-    
     //
-    //Build the PathURL
+    // SCIM endpoint from configuration
     //
-    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
     
     //
     // Validate pathURL
     //
-    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    if (!scimEndpoint || ![scimEndpoint isKindOfClass:[NSString class]] || scimEndpoint.length == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
         
@@ -847,6 +868,11 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         
         return;
     }
+    
+    //
+    //Build the PathURL
+    //
+    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, scimEndpoint];
     
     //
     //Build Parameters
@@ -912,16 +938,15 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         pageRange = defaultRange;
     }
     
-    
     //
-    //Build the PathURL
+    // SCIM endpoint from configuration
     //
-    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
     
     //
     // Validate pathURL
     //
-    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    if (!scimEndpoint || ![scimEndpoint isKindOfClass:[NSString class]] || scimEndpoint.length == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
         
@@ -933,6 +958,11 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         return;
     }
     
+    //
+    //Build the PathURL
+    //
+    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, scimEndpoint];
+        
     //
     //Build Parameters
     //
@@ -997,16 +1027,15 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         pageRange = defaultRange;
     }
     
-    
     //
-    // Build the PathURL
+    // SCIM endpoint from configuration
     //
-    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
     
     //
     // Validate pathURL
     //
-    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    if (!scimEndpoint || ![scimEndpoint isKindOfClass:[NSString class]] || scimEndpoint.length == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
         
@@ -1017,6 +1046,11 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         
         return;
     }
+    
+    //
+    // Build the PathURL
+    //
+    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, scimEndpoint];
     
     //
     // Build Parameters
@@ -1082,16 +1116,15 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         pageRange = defaultRange;
     }
     
-    
     //
-    // Build the PathURL
+    // SCIM endpoint from configuration
     //
-    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
     
     //
     // Validate pathURL
     //
-    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    if (!scimEndpoint || ![scimEndpoint isKindOfClass:[NSString class]] || scimEndpoint.length == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
         
@@ -1102,6 +1135,11 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         
         return;
     }
+    
+    //
+    // Build the PathURL
+    //
+    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, scimEndpoint];
     
     //
     // Build Parameters
@@ -1168,16 +1206,15 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         pageRange = defaultRange;
     }
     
-    
     //
-    //Build the PathURL
+    // SCIM endpoint from configuration
     //
-    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey]];
+    NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
     
     //
     // Validate pathURL
     //
-    if (!pathURL || ![pathURL isKindOfClass:[NSString class]] || pathURL.length == 0)
+    if (!scimEndpoint || ![scimEndpoint isKindOfClass:[NSString class]] || scimEndpoint.length == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorInvalidEndpoint errorDomain:kSDKErrorDomain];
         
@@ -1188,6 +1225,11 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
         
         return;
     }
+    
+    //
+    //Build the PathURL
+    //
+    NSString *pathURL = [NSString stringWithFormat:kMASGroupPathFormat, scimEndpoint];
     
     //
     //Build Parameters
