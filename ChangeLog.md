@@ -1,3 +1,12 @@
+# Version 1.3
+
+### Bug fixes
+- Fixed a bug where [MASUser currentUser].isAuthenticated property is returning wrong value when MASIdentityManagement is included in the project.
+- Removed NSAssertion to validate parameters and replaced with proper NSError return. [US240398]
+
+### New features
+
+
 # Version 1.2.00-CR1
 
 ### Bug fixes
