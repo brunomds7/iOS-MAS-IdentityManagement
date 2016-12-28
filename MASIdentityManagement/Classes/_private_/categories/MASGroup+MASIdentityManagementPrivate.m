@@ -27,10 +27,11 @@
         return nil;
     }
     
-    self.objectId       = [attributes valueForKey:MASIdMgmtGroupAttributeId];
-    self.groupName      = [attributes valueForKey:MASIdMgmtGroupAttributeDisplayName];
-    self.owner          = [[attributes valueForKey:MASIdMgmtGroupAttributeOwner] valueForKey:MASIdMgmtValue];
-    self.members        = [attributes valueForKey:MASIdMgmtGroupAttributeMembers];
+    [self setValue:[attributes valueForKey:MASIdMgmtGroupAttributeId] forKey:@"objectId"];
+    [self setValue:[attributes valueForKey:MASIdMgmtGroupAttributeDisplayName] forKey:@"groupName"];
+    [self setValue:[[attributes valueForKey:MASIdMgmtGroupAttributeOwner] valueForKey:MASIdMgmtValue] forKey:@"owner"];
+    [self setValue:[attributes valueForKey:MASIdMgmtGroupAttributeMembers] forKey:@"members"];
+    [self setValue:[[NSMutableDictionary alloc] initWithDictionary:attributes] forKey:@"_attributes"];
     
     self._attributes    = [[NSMutableDictionary alloc] initWithDictionary:attributes];
     
@@ -42,50 +43,6 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-
-- (NSString *)objectId
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtGroupAttributeId);
-}
-
-- (void)setObjectId:(NSString *)objectId
-{
-    objc_setAssociatedObject(self, &MASIdMgmtGroupAttributeId, objectId, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSString *)groupName
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtGroupAttributeDisplayName);
-}
-
-- (void)setGroupName:(NSString *)groupName
-{
-    objc_setAssociatedObject(self, &MASIdMgmtGroupAttributeDisplayName, groupName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSString *)owner
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtGroupAttributeOwner);
-}
-
-- (void)setOwner:(NSString *)owner
-{
-    objc_setAssociatedObject(self, &MASIdMgmtGroupAttributeOwner, owner, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSArray *)members
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtGroupAttributeMembers);
-}
-
-- (void)setMembers:(NSArray *)members
-{
-    objc_setAssociatedObject(self, &MASIdMgmtGroupAttributeMembers, members, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
 
 - (NSDictionary *)_attributes
 {
@@ -104,10 +61,10 @@
 {
     MASGroup *group = [[MASGroup alloc] init];
     
-    group.objectId      = self.objectId;
-    group.groupName     = self.groupName;
-    group.owner         = self.owner;
-    group.members       = self.members;
+    [group setValue:self.objectId forKey:@"objectId"];
+    [group setValue:self.groupName forKey:@"groupName"];
+    [group setValue:self.owner forKey:@"owner"];
+    [group setValue:self.members forKey:@"members"];
     
     return group;
 }
