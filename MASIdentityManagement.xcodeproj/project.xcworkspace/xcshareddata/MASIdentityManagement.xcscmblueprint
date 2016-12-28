@@ -9,8 +9,8 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DBF7BFFD-7F37-479C-B9A0-EED6612940DB",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "569BE486C635318F0F9CA133A1F6B7D5F6DF1F77" : "MASFoundation",
-    "6E328F2582C19538EB8DEF8A9B3B43CDA1712F95" : "MASIdentityManagement"
+    "569BE486C635318F0F9CA133A1F6B7D5F6DF1F77" : "MASFoundation\/",
+    "6E328F2582C19538EB8DEF8A9B3B43CDA1712F95" : "MASIdentityManagement\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MASIdentityManagement",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

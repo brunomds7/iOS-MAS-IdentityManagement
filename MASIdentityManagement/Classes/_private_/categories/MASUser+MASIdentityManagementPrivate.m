@@ -24,11 +24,11 @@
         
         return nil;
     }
-    
-    self.objectId       = [attributes valueForKey:MASIdMgmtUserAttributeId];
-    self.userName       = [attributes valueForKey:MASIdMgmtUserAttributeUserName];
-    self.familyName     = [[attributes valueForKey:MASIdMgmtUserAttributeName] valueForKey:MASIdMgmtUserAttributeFamilyName];
-    self.givenName      = [[attributes valueForKey:MASIdMgmtUserAttributeName] valueForKey:MASIdMgmtUserAttributeGivenName];
+    [self setValue:[attributes valueForKey:MASIdMgmtUserAttributeId] forKey:@"objectId"];
+    [self setValue:[attributes valueForKey:MASIdMgmtUserAttributeUserName] forKey:@"userName"];
+    [self setValue:[[attributes valueForKey:MASIdMgmtUserAttributeName] valueForKey:MASIdMgmtUserAttributeFamilyName] forKey:@"familyName"];
+    [self setValue:[[attributes valueForKey:MASIdMgmtUserAttributeName] valueForKey:MASIdMgmtUserAttributeGivenName] forKey:@"givenName"];
+
     
     //
     // Formatted Name
@@ -47,12 +47,13 @@
         [mutableCopy appendString:self.familyName];
     }
     
-    if(mutableCopy.length > 0) self.formattedName = mutableCopy;
+    if(mutableCopy.length > 0) [self setValue:mutableCopy forKey:@"self.formattedName"];
 
-    self.emailAddresses = [attributes valueForKey:MASIdMgmtUserAttributeEmails];
-    self.phoneNumbers   = [attributes valueForKey:MASIdMgmtUserAttributePhoneNumbers];
-    self.addresses      = [attributes valueForKey:MASIdMgmtUserAttributeAddresses];
-    self.groups         = [attributes valueForKey:MASIdMgmtUserAttributeGroups];
+    [self setValue:[attributes valueForKey:MASIdMgmtUserAttributeEmails] forKey:@"emailAddresses"];
+    [self setValue:[attributes valueForKey:MASIdMgmtUserAttributePhoneNumbers] forKey:@"phoneNumbers"];
+    [self setValue:[attributes valueForKey:MASIdMgmtUserAttributeAddresses] forKey:@"addresses"];
+    [self setValue:[attributes valueForKey:MASIdMgmtUserAttributeGroups] forKey:@"groups"];
+    
     
     //
     // Picture (only the first one found)
@@ -60,12 +61,10 @@
     NSString *imageUriAsString = [attributes valueForKey:MASIdMgmtUserAttributePhotos];
     if(imageUriAsString)
     {
-        //DLog(@"\n\nImage URI as string: %@\n\n", imageUriAsString);
-        
         NSURL *imageUrl = [NSURL URLWithString:[[attributes valueForKey:MASIdMgmtUserAttributePhotos][0] objectForKey:MASIdMgmtValue]];
         NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
         
-        self.photos = @{ MASIdMgmtUserAttributeThumbnailPhoto : [UIImage imageWithData:imageData] };
+        [self setValue:@{ MASIdMgmtUserAttributeThumbnailPhoto : [UIImage imageWithData:imageData] } forKey:@"photos"];
     }
     
     self._attributes    = [[NSMutableDictionary alloc] initWithDictionary:attributes];
@@ -78,129 +77,6 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-
-- (NSString *)objectId
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtUserAttributeId);
-}
-
-- (void)setObjectId:(NSString *)objectId
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributeId, objectId, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSString *)userName
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtUserAttributeUserName);
-}
-
-- (void)setUserName:(NSString *)userName
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributeUserName, userName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSString *)familyName
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtUserAttributeFamilyName);
-}
-
-- (void)setFamilyName:(NSString *)familyName
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributeFamilyName, familyName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSString *)givenName
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtUserAttributeGivenName);
-}
-
-- (void)setGivenName:(NSString *)givenName
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributeGivenName, givenName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSString *)formattedName
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtUserAttributeFormattedName);
-}
-
-- (void)setFormattedName:(NSString *)formattedName
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributeFormattedName, formattedName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSDictionary *)emailAddresses
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtUserAttributeEmails);
-}
-
-- (void)setEmailAddresses:(NSDictionary *)emailAddresses
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributeEmails, emailAddresses, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSDictionary *)phoneNumbers
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtUserAttributePhoneNumbers);
-}
-
-- (void)setPhoneNumbers:(NSDictionary *)phoneNumbers
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributePhoneNumbers, phoneNumbers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSDictionary *)addresses
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtUserAttributeAddresses);
-}
-
-- (void)setAddresses:(NSDictionary *)addresses
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributeAddresses, addresses, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSArray *)groups
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtUserAttributeGroups);
-}
-
-- (void)setGroups:(NSArray *)groups
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributeGroups, groups, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (BOOL)active
-{
-    NSNumber *activeNumber = objc_getAssociatedObject(self, &MASIdMgmtUserAttributeActive);
-    
-    return [activeNumber boolValue];
-}
-
-- (void)setActive:(BOOL)active
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributeActive, [NSNumber numberWithBool:active], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (NSDictionary *)photos
-{
-    return objc_getAssociatedObject(self, &MASIdMgmtUserAttributePhotos);
-}
-
-- (void)setPhotos:(NSDictionary *)photos
-{
-    objc_setAssociatedObject(self, &MASIdMgmtUserAttributePhotos, photos, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
 
 - (NSDictionary *)_attributes
 {
@@ -219,18 +95,18 @@
 {
     MASUser *user = [[MASUser alloc] init];
     
-    user.objectId       = self.objectId;
-    user.userName       = self.userName;
-    user.familyName     = self.familyName;
-    user.givenName      = self.givenName;
-    user.formattedName  = self.formattedName;
-    user.emailAddresses = self.emailAddresses;
-    user.phoneNumbers   = self.phoneNumbers;
-    user.addresses      = self.addresses;
-    user.groups         = self.groups;
-    user.active         = self.active;
-    user.photos         = self.photos;
-    
+    [user setValue:self.objectId forKey:@"objectId"];
+    [user setValue:self.userName forKey:@"userName"];
+    [user setValue:self.familyName forKey:@"familyName"];
+    [user setValue:self.givenName forKey:@"givenName"];
+    [user setValue:self.formattedName forKey:@"formattedName"];
+    [user setValue:self.emailAddresses forKey:@"emailAddresses"];
+    [user setValue:self.phoneNumbers forKey:@"phoneNumbers"];
+    [user setValue:self.addresses forKey:@"addresses"];
+    [user setValue:self.groups forKey:@"groups"];
+    [user setValue:[NSNumber numberWithBool:self.active] forKey:@"active"];
+    [user setValue:self.photos forKey:@"photos"];
+
     return user;
 }
 
@@ -258,16 +134,17 @@
 {
     if(self = [super initWithCoder:aDecoder])
     {
-        self.userName = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributeUserName];
-        self.familyName = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributeFamilyName];
-        self.givenName = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributeGivenName];
-        self.formattedName = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributeFormattedName];
-        self.photos = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributePhotos];
-        self.emailAddresses = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributeEmails];
-        self.phoneNumbers = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributePhoneNumbers];
-        self.addresses = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributeAddresses];
-        self.groups = [aDecoder decodeObjectForKey:MASIdMgmtUserAttributeGroups];
-        self.active = [aDecoder decodeBoolForKey:MASIdMgmtUserAttributeActive];
+
+        [self setValue:[aDecoder decodeObjectForKey:MASIdMgmtUserAttributeUserName] forKey:@"userName"];
+        [self setValue:[aDecoder decodeObjectForKey:MASIdMgmtUserAttributeFamilyName] forKey:@"familyName"];
+        [self setValue:[aDecoder decodeObjectForKey:MASIdMgmtUserAttributeGivenName] forKey:@"givenName"];
+        [self setValue:[aDecoder decodeObjectForKey:MASIdMgmtUserAttributeFormattedName] forKey:@"formattedName"];
+        [self setValue:[aDecoder decodeObjectForKey:MASIdMgmtUserAttributePhotos] forKey:@"photos"];
+        [self setValue:[aDecoder decodeObjectForKey:MASIdMgmtUserAttributeEmails] forKey:@"emailAddresses"];
+        [self setValue:[aDecoder decodeObjectForKey:MASIdMgmtUserAttributePhoneNumbers] forKey:@"phoneNumbers"];
+        [self setValue:[aDecoder decodeObjectForKey:MASIdMgmtUserAttributeAddresses] forKey:@"addresses"];
+        [self setValue:[aDecoder decodeObjectForKey:MASIdMgmtUserAttributeGroups] forKey:@"groups"];
+        [self setValue:[NSNumber numberWithBool:[aDecoder decodeBoolForKey:MASIdMgmtUserAttributeActive]] forKey:@"active"];
     }
     
     return self;
