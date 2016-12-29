@@ -47,7 +47,7 @@
         [mutableCopy appendString:self.familyName];
     }
     
-    if(mutableCopy.length > 0) [self setValue:mutableCopy forKey:@"self.formattedName"];
+    if(mutableCopy.length > 0) [self setValue:mutableCopy forKey:@"formattedName"];
 
     [self setValue:[attributes valueForKey:MASIdMgmtUserAttributeEmails] forKey:@"emailAddresses"];
     [self setValue:[attributes valueForKey:MASIdMgmtUserAttributePhoneNumbers] forKey:@"phoneNumbers"];
