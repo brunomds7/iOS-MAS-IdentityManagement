@@ -205,6 +205,11 @@ typedef NS_ENUM (NSUInteger, MASIdentityManagementError)
     //
     MASIdentityManagementErrorMissingParameter = 400103,
     MASIdentityManagementErrorInvalidEndpoint = 400104,
+    
+    //
+    //  User
+    //
+    MASIdentityManagementErrorUserNotAuthenticated = 530004
 };
 
 
