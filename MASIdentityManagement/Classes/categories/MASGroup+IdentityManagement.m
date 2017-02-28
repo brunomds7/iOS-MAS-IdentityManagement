@@ -68,6 +68,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     DLog(@"\n\ncalled with sortedByAttribute: %@, sortOrder: %@, pageRange: %@, includedAttributes: %@ and excludedAttributes: %@\n\n",
         sortByAttribute, (sortOrder ? MASIdMgmtSortOrderAscending : MASIdMgmtSortOrderDescending),
         NSStringFromRange(pageRange), includedAttributes, excludedAttributes);
+ 
+    //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error, 0);
+        }
+        
+        return;
+    }
     
     //
     // Create the filtered request
@@ -97,6 +111,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
 + (void)getGroupByObjectId:(NSString *)objectId
     completion:(void (^)(MASGroup *group, NSError *error))completion
 {
+    //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error);
+        }
+        
+        return;
+    }
+    
     //
     // Check for objectId
     //
@@ -191,6 +219,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     completion:(void (^)(MASUser *user, NSError *error))completion
 {
     //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error);
+        }
+        
+        return;
+    }
+    
+    //
     // Create the filter
     //
     MASFilter *filter = [MASFilter filterByAttribute:MASIdMgmtGroupAttributeId equalTo:objectId];
@@ -243,6 +285,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     completion:(void (^)(MASGroup *group, NSError *error))completion
 {
     //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error);
+        }
+        
+        return;
+    }
+    
+    //
     // Create the filter
     //
     MASFilter *filter = [MASFilter filterByAttribute:MASIdMgmtGroupAttributeDisplayName equalTo:groupName];
@@ -284,6 +340,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     excludedAttributes:(NSArray *)excludedAttributes
     completion:(void (^)(MASUser *user, NSError *error))completion
 {
+    //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error);
+        }
+        
+        return;
+    }
+    
     //
     // Create the filter
     //
@@ -336,6 +406,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
 {
     DLog(@"\n\nThe filtered request is: %@\n\n", [filteredRequest asStringQueryPath]);
+    
+    //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error, 0);
+        }
+        
+        return;
+    }
     
     //
     // SCIM endpoint from configuration
@@ -435,6 +519,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
 {
     //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error, 0);
+        }
+        
+        return;
+    }
+    
+    //
     // Create the filter
     //
     MASFilter *filter = [MASFilter fromStringFilterExpression:filterExpression];
@@ -470,6 +568,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
 - (void)saveInBackgroundWithCompletion:(void (^)(MASGroup *group, NSError *error))completion
 {
     //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error);
+        }
+        
+        return;
+    }
+    
+    //
     // SCIM endpoint from configuration
     //
     NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
@@ -503,9 +615,12 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
                                    
         schemas, kMASGroupScimSchemas,
         self.groupName, MASIdMgmtGroupAttributeDisplayName,
-        owner, MASIdMgmtGroupAttributeOwner,
         self.members, MASIdMgmtGroupAttributeMembers, nil];
     
+    if (self.owner)
+    {
+        [params setObject:owner forKey:MASIdMgmtGroupAttributeOwner];
+    }
     
     if (!self.objectId) {
 
@@ -621,6 +736,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
 - (void)deleteInBackgroundWithCompletion:(void (^)(BOOL success, NSError *error))completion
 {
     //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(NO, error);
+        }
+        
+        return;
+    }
+    
+    //
     // SCIM endpoint from configuration
     //
     NSString *scimEndpoint = [[MASConfiguration currentConfiguration] endpointPathForKey:MASSCIMEndPointKey];
@@ -689,6 +818,20 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
 
 - (void)updateGroupMember:(MASUser *)user withOperation:(MASGroupMemberOperation)operation completion:(void (^)(MASGroup *group, NSError *error))completion
 {
+    //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error);
+        }
+        
+        return;
+    }
+    
     //
     // Check for user
     //
