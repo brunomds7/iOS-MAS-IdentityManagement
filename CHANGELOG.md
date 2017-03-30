@@ -1,3 +1,9 @@
+# Version 4.0.00
+
+### Bug fixes
+- SDK was not properly validating the authenticated session. When a user is not authenticated, the SDK now returns an error. [DE269342]
+- Fixed minor issues to the formattedName attribute of the user.
+
 # Version 1.3
 
 ### Bug fixes
