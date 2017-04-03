@@ -1,13 +1,22 @@
-# Version 1.3
+# Version 1.4.00
+
+### Bug fixes
+- SDK was not properly validating the authenticated session. When a user is not authenticated, the SDK now returns an error. [DE269342]
+- Fixed minor issues to the formattedName attribute of the user.
+
+# Version 1.3.00
 
 ### Bug fixes
 - Fixed a bug where [MASUser currentUser].isAuthenticated property is returning wrong value when MASIdentityManagement is included in the project.
 - Removed NSAssertion to validate parameters and replaced with proper NSError return. [US240398]
 
-### New features
 
+# Version 1.2.03
 
-# Version 1.2.00-CR1
+- Release tag to align with MASFoundation framework.
+- ***No fixes for this framework***
+
+# Version 1.2.01
 
 ### Bug fixes
 - The filter (filterExpressions string) was constructed with incorrect syntax (missing property name for filter in URL query string).  [MCT-482]

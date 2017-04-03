@@ -70,6 +70,20 @@ typedef void (^GetUsersFailure)(NSError *error);
     excludedAttributes:(NSArray *)excludedAttributes
     completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
 {
+    //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error, 0);
+        }
+        
+        return;
+    }
+    
     //DLog(@"\n\ncalled with sortedByAttribute: %@, sortOrder: %@, pageRange: %@, includedAttributes: %@ and excludedAttributes: %@\n\n",
     //    sortByAttribute, (sortOrder ? MASIdMgmtSortOrderAscending : MASIdMgmtSortOrderDescending),
     //    NSStringFromRange(pageRange), includedAttributes, excludedAttributes);
@@ -108,6 +122,20 @@ typedef void (^GetUsersFailure)(NSError *error);
     completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
 {
     //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error, 0);
+        }
+        
+        return;
+    }
+    
+    //
     // Create the filter
     //
     MASFilter *filter = [MASFilter filterByAttribute:MASIdMgmtUserAttributeUserName contains:value];
@@ -141,6 +169,20 @@ typedef void (^GetUsersFailure)(NSError *error);
 + (void)getUserByObjectId:(NSString *)objectId
     completion:(void (^)(MASUser *user, NSError *error))completion
 {
+    //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error);
+        }
+        
+        return;
+    }
+    
     //
     // Check for objectId
     //
@@ -241,6 +283,20 @@ typedef void (^GetUsersFailure)(NSError *error);
     completion:(void (^)(MASUser *user, NSError *error))completion
 {
     //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error);
+        }
+        
+        return;
+    }
+    
+    //
     // Create the filter
     //
     MASFilter *filter = [MASFilter filterByAttribute:MASIdMgmtUserAttributeId equalTo:objectId];
@@ -290,6 +346,20 @@ typedef void (^GetUsersFailure)(NSError *error);
     completion:(void (^)(MASUser *user, NSError *error))completion
 {
     //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error);
+        }
+        
+        return;
+    }
+    
+    //
     // Create the filter
     //
     MASFilter *filter = [MASFilter filterByAttribute:MASIdMgmtUserAttributeUserName equalTo:userName];
@@ -331,6 +401,20 @@ typedef void (^GetUsersFailure)(NSError *error);
     excludedAttributes:(NSArray *)excludedAttributes
     completion:(void (^)(MASUser *user, NSError *error))completion
 {
+    //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error);
+        }
+        
+        return;
+    }
+    
     //
     // Create the filter
     //
@@ -383,6 +467,20 @@ typedef void (^GetUsersFailure)(NSError *error);
     completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
 {
     DLog(@"\n\nThe filtered request is: %@\n\n", [filteredRequest asStringQueryPath]);
+    
+    //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error, 0);
+        }
+        
+        return;
+    }
     
     //
     // SCIM endpoint from configuration
@@ -481,6 +579,20 @@ typedef void (^GetUsersFailure)(NSError *error);
     excludedAttributes:(NSArray *)excludedAttributes
     completion:(void (^)(NSArray *userList, NSError *error, NSUInteger totalResults))completion
 {
+    //
+    //  Validate user's session
+    //
+    if (![MASUser currentUser] || ![MASUser currentUser].isAuthenticated)
+    {
+        if (completion)
+        {
+            NSError *error = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorUserNotAuthenticated errorDomain:kSDKErrorDomain];
+            completion(nil, error, 0);
+        }
+        
+        return;
+    }
+    
     //
     // Create the filter
     //
