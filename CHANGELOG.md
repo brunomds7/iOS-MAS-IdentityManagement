@@ -1,4 +1,4 @@
-# Version 4.0.00
+# Version 1.4.00
 
 ### Bug fixes
 - SDK was not properly validating the authenticated session. When a user is not authenticated, the SDK now returns an error. [DE269342]
