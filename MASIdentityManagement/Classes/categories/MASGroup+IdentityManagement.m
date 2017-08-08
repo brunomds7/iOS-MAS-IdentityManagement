@@ -806,17 +806,29 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
 
 - (void)addMember:(MASUser *)user completion:(void (^)(MASGroup *group, NSError *error))completion
 {
-    [self updateGroupMember:user withOperation:MASGroupMemberOperationAdd completion:completion];
+    [self updateGroupMember:@[user] withOperation:MASGroupMemberOperationAdd completion:completion];
+}
+
+
+- (void)addMembers:(NSArray *)users completion:(void (^)(MASGroup *group, NSError *error))completion
+{
+    [self updateGroupMember:users withOperation:MASGroupMemberOperationAdd completion:completion];
 }
 
 
 - (void)removeMember:(MASUser *)user completion:(void (^)(MASGroup *group, NSError *error))completion;
 {
-    [self updateGroupMember:user withOperation:MASGroupMemberOperationRemove completion:completion];
+    [self updateGroupMember:@[user] withOperation:MASGroupMemberOperationRemove completion:completion];
 }
 
 
-- (void)updateGroupMember:(MASUser *)user withOperation:(MASGroupMemberOperation)operation completion:(void (^)(MASGroup *group, NSError *error))completion
+- (void)removeMembers:(NSArray *)users completion:(void (^)(MASGroup *group, NSError *error))completion
+{
+    [self updateGroupMember:users withOperation:MASGroupMemberOperationRemove completion:completion];
+}
+
+
+- (void)updateGroupMember:(NSArray *)users withOperation:(MASGroupMemberOperation)operation completion:(void (^)(MASGroup *group, NSError *error))completion
 {
     //
     //  Validate user's session
@@ -835,7 +847,7 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //
     // Check for user
     //
-    if (!user)
+    if (!users || [users count] == 0)
     {
         NSError *localizedError = [NSError errorForIdentityManagementErrorCode:MASIdentityManagementErrorMissingParameter errorDomain:kSDKErrorDomain];
         
@@ -899,8 +911,12 @@ static NSString *const kMASGroupScimSchemaMessagesPatchOp = @"urn:ietf:params:sc
     //
     NSArray *schemas = @[ kMASGroupScimSchemaMessagesPatchOp ];
     
-    NSArray *memberValue = @[ @{ MASIdMgmtDisplay : user.userName,
-                                 MASIdMgmtValue : user.objectId }];
+    NSMutableArray *memberValue = [NSMutableArray array];
+    
+    for (MASUser *user in users)
+    {
+        [memberValue addObject:@{MASIdMgmtDisplay : user.userName, MASIdMgmtValue : user.objectId}];
+    }
     
     NSString *operator;
     
