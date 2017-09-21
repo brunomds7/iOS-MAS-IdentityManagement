@@ -191,6 +191,15 @@
 
 
 /**
+ *  Adds users to the group.
+ *
+ *  @param users NSArray of MASUser objects
+ *  @param completion Completion block with either the MASGroup object or the Error message
+ */
+- (void)addMembers:(nonnull NSArray <MASUser *>*)users completion:(nullable void (^)(MASGroup * _Nullable group, NSError * _Nullable error))completion;
+
+
+/**
  * Removes an user from the group
  *
  * @param user MASUser object
@@ -198,6 +207,14 @@
  */
 - (void)removeMember:(nonnull MASUser *)user completion:(nullable void (^)(MASGroup * _Nullable group, NSError * _Nullable error))completion;
 
+
+/**
+ * Removes users from the group
+ *
+ * @param users NSArray of MASUser objects
+ * @param completion Completion block with either the MASGroup object or the Error message
+ */
+- (void)removeMembers:(nonnull NSArray <MASUser *>*)users completion:(nullable void (^)(MASGroup * _Nullable group, NSError * _Nullable error))completion;
 
 
 # pragma mark - Print Attributes
