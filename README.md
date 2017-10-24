@@ -1,4 +1,4 @@
-MAS IdentityManagement is the user and group management framework of the Mobile SDK, which is part of [CA Mobile App Services][mas.ca.com]. It enables developers to securely access users and groups from enterprise identity providers like LDAP, MSAD, and others. Supports creating groups on the fly (called ad hoc groups) for collaborative apps. The underlying protocol is SCIM.
+MAS IdentityManagement is the user and group management framework of the iOS Mobile SDK, which is part of CA Mobile API Gateway. It enables developers to securely access users and groups from enterprise identity providers like LDAP, MSAD, and others. Supports creating groups on the fly (called ad hoc groups) for collaborative apps. The underlying protocol is SCIM.
 
 ## Features
 
@@ -9,9 +9,8 @@ The MASIdentityManagement framework comes with the following features:
 
 ## Get Started
 
-- [Download MASConnecta][download] 
-- Read the ["Getting Started" guide][get-started] or watch some [video tutorials][videos]
-- Check out our [documentation][docs] for more details and sample codes
+- Check out our [documentation][docs] for sample code, video tutorials and more.
+- Download [MASIdentityManagement](ttps://github.com/CAAPIM/iOS-MAS-IdentityManagement/archive/master.zip)
 
 
 ## Communication
