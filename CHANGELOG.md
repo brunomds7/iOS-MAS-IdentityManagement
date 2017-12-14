@@ -1,3 +1,11 @@
+# Version 1.6.00
+
+### Bug fixes
+None.
+
+### New features
+None.
+
 # Version 1.5.00
 
 NOTE: From this version on the frameworks changed to Dynamic instead of Static library
@@ -15,7 +23,7 @@ NOTE: From this version on the frameworks changed to Dynamic instead of Static l
 - SDK was not properly validating the authenticated session. When a user is not authenticated, the SDK now returns an error. [DE269342]
 - Fixed minor issues to the formattedName attribute of the user.
 
-# Version 1.3.00
+# Version 1.3.01
 
 ### Bug fixes
 - Fixed a bug where [MASUser currentUser].isAuthenticated property is returning wrong value when MASIdentityManagement is included in the project.
